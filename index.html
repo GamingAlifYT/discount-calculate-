@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discount Calculator</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#111827;
+        color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        margin:0;
+    }
+    .container{
+        background:#1f2937;
+        padding:25px;
+        border-radius:12px;
+        width:320px;
+        box-shadow:0 0 15px rgba(0,0,0,0.5);
+    }
+    h2{
+        text-align:center;
+        color:#22c55e;
+    }
+    input, button{
+        width:100%;
+        padding:10px;
+        margin-top:10px;
+        border:none;
+        border-radius:8px;
+    }
+    input{
+        background:#374151;
+        color:white;
+    }
+    button{
+        background:#22c55e;
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+    }
+    button:hover{
+        background:#16a34a;
+    }
+    .result{
+        margin-top:15px;
+        text-align:center;
+        font-size:18px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Discount Calculator</h2>
+
+    <input type="number" id="price" placeholder="Original Price">
+    <input type="number" id="discount" placeholder="Discount %">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculate() {
+    let price = parseFloat(document.getElementById("price").value);
+    let discount = parseFloat(document.getElementById("discount").value);
+
+    if(isNaN(price) || isNaN(discount)){
+        document.getElementById("result").innerHTML = "Please enter valid numbers!";
+        return;
+    }
+
+    let saved = (price * discount) / 100;
+    let finalPrice = price - saved;
+
+    document.getElementById("result").innerHTML =
+        `💸 Saved: ${saved.toFixed(2)}<br>
+         ✅ Final Price: ${finalPrice.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
